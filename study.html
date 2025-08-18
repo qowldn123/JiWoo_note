@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>오늘의 영어 표현</title>
+</head>
+<body>
+  <h2>오늘의 영어 표현 🇺🇸</h2>
+  <div id="expression"></div>
+  <div id="dialogue"></div>
+
+  <script>
+    const lessons = {
+      1: {
+        expression: "How’s it going?",
+        dialogue: "A: Hey, how’s it going?<br>B: Pretty good. How about you?"
+      },
+      2: {
+        expression: "Is there a coffee shop around here?",
+        dialogue: "A: Excuse me, is there a coffee shop around here?<br>B: Yeah, it’s right across the street."
+      },
+      3: {
+        expression: "Can I get a cheeseburger combo?",
+        dialogue: "A: Hi, can I get a cheeseburger combo?<br>B: Sure. Do you want fries with that?"
+      },
+      4: {
+        expression: "How much is this one?",
+        dialogue: "A: How much is this one?<br>B: That’s 25 bucks."
+      },
+      5: {
+        expression: "Can’t wait for the weekend!",
+        dialogue: "A: Man, I’m so tired. It’s been a crazy week.<br>B: Same here. Can’t wait for the weekend."
+      }
+    };
+
+    let day = new Date().getDay(); 
+    if (day === 0 || day === 6) day = 1; // 주말이면 월요일 걸로 보여주기
+    
+    const lesson = lessons[day];
+    document.getElementById("expression").innerHTML = "👉 " + lesson.expression;
+    document.getElementById("dialogue").innerHTML = lesson.dialogue;
+  </script>
+</body>
+</html>
