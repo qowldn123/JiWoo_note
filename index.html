@@ -10,75 +10,9 @@
   <h2><li><a href="1.html">우리 역사의 기원과 형성</a></li></h2>
   <h2><li><a href="2.html">고대사회-삼국시대</a></li></h2>
   <h2><li><a href="3.html">고대사회-남북국시대</a></li></h2>
-  <!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>오늘의 영어 표현</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    .card { 
-      background: #f9f9f9; 
-      padding: 20px; 
-      border-radius: 15px; 
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      max-width: 500px;
-    }
-    h2 { color: #2c3e50; }
-    .expression { font-size: 1.4em; font-weight: bold; margin: 10px 0; }
-    .dialogue { margin: 10px 0; }
-    audio { margin-top: 10px; width: 100%; }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <h2>오늘의 영어 표현 🇺🇸</h2>
-    <div id="expression"></div>
-    <div id="dialogue"></div>
-    <audio id="audio" controls></audio>
-  </div>
-
-  <script>
-    // 요일별 학습 데이터
-    const lessons = {
-      1: {
-        expression: "How’s it going?",
-        dialogue: "A: Hey, how’s it going?<br>B: Pretty good. How about you?",
-        audio: "audio/monday.mp3"
-      },
-      2: {
-        expression: "Is there a coffee shop around here?",
-        dialogue: "A: Excuse me, is there a coffee shop around here?<br>B: Yeah, it’s right across the street.",
-        audio: "audio/tuesday.mp3"
-      },
-      3: {
-        expression: "Can I get a cheeseburger combo?",
-        dialogue: "A: Hi, can I get a cheeseburger combo?<br>B: Sure. Do you want fries with that?",
-        audio: "audio/wednesday.mp3"
-      },
-      4: {
-        expression: "How much is this one?",
-        dialogue: "A: How much is this one?<br>B: That’s 25 bucks.",
-        audio: "audio/thursday.mp3"
-      },
-      5: {
-        expression: "Can’t wait for the weekend!",
-        dialogue: "A: Man, I’m so tired. It’s been a crazy week.<br>B: Same here. Can’t wait for the weekend.",
-        audio: "audio/friday.mp3"
-      }
-    };
-
-    // 오늘 요일 (월=1 ~ 금=5)
-    let day = new Date().getDay(); 
-    if (day === 0 || day === 6) day = 1; // 주말에는 월요일 자료 보여주기
-    
-    const lesson = lessons[day];
-    document.getElementById("expression").innerHTML = "👉 " + lesson.expression;
-    document.getElementById("dialogue").innerHTML = lesson.dialogue;
-    document.getElementById("audio").src = lesson.audio;
-  </script>
 </body>
 </html>
 </ol>
 </body>
 </html>
+
