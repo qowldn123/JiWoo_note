@@ -4,45 +4,40 @@
   <meta charset="UTF-8">
   <title>자동 학습</title>
   <style>
-    body { 
-      font-family: Arial, sans-serif; 
-      padding: 20px; 
-      background: #f0f2f5;
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f0f2f5; }
+    .card { background: #ffffff; padding: 20px; border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 500px; margin: 80px auto 40px; }
+    h2 { color: #2c3e50; margin-bottom: 15px; }
+    .expression { font-size: 1.4em; font-weight: bold; margin: 10px 0; color: #34495e; }
+    .dialogue { margin: 10px 0; line-height: 1.5; color: #555; }
+    audio { margin-top: 15px; width: 100%; }
+
+    /* 홈으로 버튼 */
+    .back-home {
+      position: fixed; top: 16px; left: 16px;
+      display: inline-flex; align-items: center; gap: 8px;
+      text-decoration: none; color: #2c3e50; background: #fff;
+      padding: 8px 12px; border-radius: 9999px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.12);
+      font-weight: 600; font-size: 14px;
     }
-    .card { 
-      background: #ffffff; 
-      padding: 20px; 
-      border-radius: 15px; 
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      max-width: 500px;
-      margin: auto;
-    }
-    h2 { 
-      color: #2c3e50; 
-      margin-bottom: 15px;
-    }
-    .expression { 
-      font-size: 1.4em; 
-      font-weight: bold; 
-      margin: 10px 0; 
-      color: #34495e;
-    }
-    .dialogue { 
-      margin: 10px 0; 
-      line-height: 1.5; 
-      color: #555;
-    }
-    audio { 
-      margin-top: 15px; 
-      width: 100%; 
-    }
+    .back-home:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,.18); }
+    .back-home svg { width: 18px; height: 18px; }
   </style>
 </head>
 <body>
-  <a href="index.html" class="back-home" title="메인으로">
-    <i class="fas fa-home"></i>
+  <!-- 메인으로 돌아가기 (SVG 아이콘) -->
+  <a href="index.html" class="back-home" aria-label="메인으로">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M3 11l9-7 9 7"></path>
+      <path d="M9 22V12h6v10"></path>
+      <path d="M2 12l10-8 10 8v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"></path>
+    </svg>
+    메인
   </a>
-    <div class="card">
+
+  <div class="card">
     <h2>오늘의 영어 표현 🇺🇸</h2>
     <div id="expression" class="expression"></div>
     <div id="dialogue" class="dialogue"></div>
@@ -52,38 +47,28 @@
   <script>
     // 요일별 학습 데이터 (월=1 ~ 금=5)
     const lessons = {
-      1: {
-        expression: "How’s it going?",
-        dialogue: "A: Hey, how’s it going?<br>B: Pretty good. How about you?",
-        audio: "audio/monday.mp3"
-      },
-      2: {
-        expression: "Is there a coffee shop around here?",
-        dialogue: "A: Excuse me, is there a coffee shop around here?<br>B: Yeah, it’s right across the street.",
-        audio: "audio/tuesday.mp3"
-      },
-      3: {
-        expression: "Can I get a cheeseburger combo?",
-        dialogue: "A: Hi, can I get a cheeseburger combo?<br>B: Sure. Do you want fries with that?",
-        audio: "audio/wednesday.mp3"
-      },
-      4: {
-        expression: "How much is this one?",
-        dialogue: "A: How much is this one?<br>B: That’s 25 bucks.",
-        audio: "audio/thursday.mp3"
-      },
-      5: {
-        expression: "Can’t wait for the weekend!",
-        dialogue: "A: Man, I’m so tired. It’s been a crazy week.<br>B: Same here. Can’t wait for the weekend.",
-        audio: "audio/friday.mp3"
-      }
+      1:{expression:"How’s it going?",
+         dialogue:"A: Hey, how’s it going?<br>B: Pretty good. How about you?",
+         audio:"audio/monday.mp3"},
+      2:{expression:"Is there a coffee shop around here?",
+         dialogue:"A: Excuse me, is there a coffee shop around here?<br>B: Yeah, it’s right across the street.",
+         audio:"audio/tuesday.mp3"},
+      3:{expression:"Can I get a cheeseburger combo?",
+         dialogue:"A: Hi, can I get a cheeseburger combo?<br>B: Sure. Do you want fries with that?",
+         audio:"audio/wednesday.mp3"},
+      4:{expression:"How much is this one?",
+         dialogue:"A: How much is this one?<br>B: That’s 25 bucks.",
+         audio:"audio/thursday.mp3"},
+      5:{expression:"Can’t wait for the weekend!",
+         dialogue:"A: Man, I’m so tired. It’s been a crazy week.<br>B: Same here. Can’t wait for the weekend.",
+         audio:"audio/friday.mp3"}
     };
 
     // 오늘 요일 계산
-    let day = new Date().getDay(); 
-    if (day === 0 || day === 6) day = 1; // 주말에는 월요일 자료 보여주기
-
+    let day = new Date().getDay();
+    if (day === 0 || day === 6) day = 1; // 주말엔 월요일 자료
     const lesson = lessons[day];
+
     document.getElementById("expression").innerHTML = "👉 " + lesson.expression;
     document.getElementById("dialogue").innerHTML = lesson.dialogue;
     document.getElementById("audio").src = lesson.audio;
